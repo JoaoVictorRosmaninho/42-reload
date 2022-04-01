@@ -1,40 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wde-souz <wde-souz@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 02:19:09 by wde-souz          #+#    #+#             */
-/*   Updated: 2022/04/01 21:17:13 by wde-souz         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdlib.h>
 
-char	*ft_strdup(char *src)
+int	ft_strlen(char *str)
 {
-	char	*dup;
-	char	*d_aux;
+	char	*tmp;
 
-	dup = malloc (sizeof (src));
-	d_aux = dup;
+	tmp = str;
+	while (*str++)
+		;
+	return ((int)(str - tmp) - 1);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	char	*tmp;
+
+	tmp = dest;
 	while (*src)
-	{
-		*dup = *src;
-		src++;
-		dup++;
-	}
-	*dup = '\0';
-	return (d_aux);
+		*dest++ = *src++;
+	*dest = *src;
+	return (tmp);
 }
-/*
-#include <stdlib.h>
-#include <stdio.h>
-int main (){
-	char *c = "HelloWorld";
-    
-    printf("char => %s.\n",ft_strdup(c));
-	return (0);
+
+char *ft_strdup(char *str) 
+{
+  char *new_str; 
+
+  new_str = (char *) malloc(ft_strlen(str) + 1); 
+  ft_strcpy(new_str, str); 
+  return (new_str);
 }
-*/
+
+
+
